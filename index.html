@@ -13,18 +13,28 @@
             overflow: hidden;
             background-color: #f4f7f6;
         }
-        /* বটপ্রেসের ওয়েবচ্যাটকে পুরো স্ক্রিন জুড়ে দেখানোর জন্য সিএসএস */
-        iframe {
-            border: none;
+        /* বটপ্রেসের পপ-আপ কন্টেইনারকে জোর করে ফুল স্ক্রিন করার সিএসএস */
+        #bp-web-widget-container iframe {
+            max-height: 100% !important;
+            max-width: 100% !important;
             width: 100% !important;
             height: 100% !important;
+            bottom: 0 !important;
+            right: 0 !important;
         }
     </style>
 </head>
 <body>
 
-    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/06/07/12/20260607125414-7OHTH3ZR.js" defer></script>
-    
-    </body>
+    <!-- 🛑 এখানে আপনার বটপ্রেসের মেইন ২/৩ লাইনের <script src="..."></script> কোডটি পেস্ট করবেন 🛑 -->
+
+
+    <!-- 💡 বট ওপেন করার জন্য স্ক্রিপ্ট ট্রিক -->
+    <script>
+        window.botpressWebChat.onEvent(function () {
+            window.botpressWebChat.sendEvent({ type: 'show' });
+        }, ['lifecycleLoaded']);
+    </script>
+
+</body>
 </html>
