@@ -36,22 +36,9 @@
 </head>
 <body>
 
-    <!-- ১. বটপ্রেসের ইনজেক্ট স্ক্রিপ্ট -->
-    <script src="https://cdn.botpress.cloud/webchat/v3/inject.js"></script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2026/06/07/12/20260607125414-7OHTH3ZR.js" defer></script>
     
-    <!-- ২. আপনার বটের ইউনিক কনফিগারেশন স্ক্রিপ্ট -->
-    <script src="https://files.bpcontent.cloud/2026/06/12/20260607125414-7OHTH3ZR.js" defer></script>
-
-    <!-- ৩. কোনো ইভেন্টের ঝামেলা ছাড়াই পেজ লোড হওয়ার ২ সেকেন্ড পর বট ওপেন করার সেফ জাভাস্ক্রিপ্ট -->
-    <script>
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                if (window.botpressWebChat) {
-                    window.botpressWebChat.sendEvent({ type: 'show' });
-                }
-            }, 1500); // ১.৫ সেকেন্ডের একটা সেফ টাইমার যাতে স্ক্রিপ্ট লোড হওয়ার সময় পায়
-        });
-    </script>
-
+ 
 </body>
 </html>
