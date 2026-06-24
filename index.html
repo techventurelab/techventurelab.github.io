@@ -13,25 +13,30 @@
             overflow: hidden;
             background-color: #f4f7f6;
         }
-        /* বটপ্রেসের পপ-আপ কন্টেইনারকে জোর করে ফুল স্ক্রিন করার সিএসএস */
-        #bp-web-widget-container iframe {
-            max-height: 100% !important;
-            max-width: 100% !important;
+        /* এম্বেড করা চ্যাটবটকে পুরো স্ক্রিন জুড়ে দেখানোর সিএসএস */
+        #bp-webchat {
             width: 100% !important;
             height: 100% !important;
-            bottom: 0 !important;
-            right: 0 !important;
+        }
+        iframe {
+            border: none !important;
+            width: 100% !important;
+            height: 100% !important;
         }
     </style>
 </head>
 <body>
 
-    
-    <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
-<script src="https://files.bpcontent.cloud/2026/06/07/12/20260607125414-7OHTH3ZR.js" defer></script>
-    
+    <!-- ১. বটপ্রেসের চ্যাট উইন্ডোটি এই কন্টেইনারের ভেতর ফুল-স্ক্রিন হয়ে লোড হবে -->
+    <div id="bp-webchat"></div>
 
-    <!-- 💡 বট ওপেন করার জন্য স্ক্রিপ্ট ট্রিক -->
+    <!-- ২. আপনার বটপ্রেসের ইনজেক্ট স্ক্রিপ্ট -->
+    <script src="https://cdn.botpress.cloud/webchat/v3/js/inject.js"></script>
+    
+    <!-- ৩. আপনার বটের ইউনিক কনফিগারেশন স্ক্রিপ্ট (এম্বেড মোডের জন্য কাস্টমাইজড) -->
+    <script src="https://files.bpcontent.cloud/2026/06/12/20260607125414-7OHTH3ZR.js" defer></script>
+
+    <!-- ৪. পেজ লোড হওয়া মাত্রই বটকে কন্টেইনারের ভেতর ফুল-স্ক্রিন করার জাভাস্ক্রিপ্ট -->
     <script>
         window.botpressWebChat.onEvent(function () {
             window.botpressWebChat.sendEvent({ type: 'show' });
