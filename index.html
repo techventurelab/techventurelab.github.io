@@ -13,40 +13,22 @@
             overflow: hidden;
             background-color: #f4f7f6;
         }
-        /* বটপ্রেসের ডান কোনার গোল বাটনটি লুকানোর জন্য */
-        .bpw-layout {
-            display: none !important;
-        }
-        /* বটপ্রেসের মেইন চ্যাট উইন্ডোকে জোর করে পুরো স্ক্রিন জুড়ে ফুল-স্ক্রিন করার সিএসএস */
-        #bp-web-widget-container iframe {
-            max-height: 100% !important;
-            max-width: 100% !important;
-            width: 100% !important;
-            height: 100% !important;
-            bottom: 0 !important;
-            right: 0 !important;
-            left: 0 !important;
-            top: 0 !important;
-            position: fixed !important;
+        /* চ্যাটবট উইন্ডোকে স্ক্রিনের বর্ডারের সাথে মিলিয়ে ফুল স্ক্রিন করার সিএসএস */
+        iframe {
+            border: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- ১. বটপ্রেসের ইনজেক্ট স্ক্রিপ্ট -->
-    <script src="https://cdn.botpress.cloud/webchat/v3/js/inject.js"></script>
-    
-    <!-- ২. আপনার বটের ইউনিক কনফিগারেশন স্ক্রিপ্ট -->
-    <script src="https://files.bpcontent.cloud/2026/06/12/20260607125414-7OHTH3ZR.js" defer></script>
-
-    <!-- ৩. পেজ লোড হওয়ামাত্রই বটকে পপ-আপ করে ফুল-স্ক্রিন দেখানোর ম্যাজিক জাভাস্ক্রিপ্ট -->
-    <script>
-        window.botpressWebChat.onEvent(function (event) {
-            if (event.type === 'LIFECYCLE.LOADED') {
-                window.botpressWebChat.sendEvent({ type: 'show' });
-            }
-        }, ['LIFECYCLE.LOADED']);
-    </script>
+    <iframe src="https://cdn.botpress.cloud/webchat/v3/index.html?configuration=https://files.bpcontent.cloud/2026/06/12/20260607125414-7OHTH3ZR.js"></iframe>
 
 </body>
 </html>
