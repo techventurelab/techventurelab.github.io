@@ -13,34 +13,39 @@
             overflow: hidden;
             background-color: #f4f7f6;
         }
-        /* এম্বেড করা চ্যাটবটকে পুরো স্ক্রিন জুড়ে দেখানোর সিএসএস */
-        #bp-webchat {
-            width: 100% !important;
-            height: 100% !important;
+        /* বটপ্রেসের ডান কোনার গোল বাটনটি লুকানোর জন্য */
+        .bpw-layout {
+            display: none !important;
         }
-        iframe {
-            border: none !important;
+        /* বটপ্রেসের মেইন চ্যাট উইন্ডোকে জোর করে পুরো স্ক্রিন জুড়ে ফুল-স্ক্রিন করার সিএসএস */
+        #bp-web-widget-container iframe {
+            max-height: 100% !important;
+            max-width: 100% !important;
             width: 100% !important;
             height: 100% !important;
+            bottom: 0 !important;
+            right: 0 !important;
+            left: 0 !important;
+            top: 0 !important;
+            position: fixed !important;
         }
     </style>
 </head>
 <body>
 
-    <!-- ১. বটপ্রেসের চ্যাট উইন্ডোটি এই কন্টেইনারের ভেতর ফুল-স্ক্রিন হয়ে লোড হবে -->
-    <div id="bp-webchat"></div>
-
-    <!-- ২. আপনার বটপ্রেসের ইনজেক্ট স্ক্রিপ্ট -->
+    <!-- ১. বটপ্রেসের ইনজেক্ট স্ক্রিপ্ট -->
     <script src="https://cdn.botpress.cloud/webchat/v3/js/inject.js"></script>
     
-    <!-- ৩. আপনার বটের ইউনিক কনফিগারেশন স্ক্রিপ্ট (এম্বেড মোডের জন্য কাস্টমাইজড) -->
+    <!-- ২. আপনার বটের ইউনিক কনফিগারেশন স্ক্রিপ্ট -->
     <script src="https://files.bpcontent.cloud/2026/06/12/20260607125414-7OHTH3ZR.js" defer></script>
 
-    <!-- ৪. পেজ লোড হওয়া মাত্রই বটকে কন্টেইনারের ভেতর ফুল-স্ক্রিন করার জাভাস্ক্রিপ্ট -->
+    <!-- ৩. পেজ লোড হওয়ামাত্রই বটকে পপ-আপ করে ফুল-স্ক্রিন দেখানোর ম্যাজিক জাভাস্ক্রিপ্ট -->
     <script>
-        window.botpressWebChat.onEvent(function () {
-            window.botpressWebChat.sendEvent({ type: 'show' });
-        }, ['lifecycleLoaded']);
+        window.botpressWebChat.onEvent(function (event) {
+            if (event.type === 'LIFECYCLE.LOADED') {
+                window.botpressWebChat.sendEvent({ type: 'show' });
+            }
+        }, ['LIFECYCLE.LOADED']);
     </script>
 
 </body>
