@@ -17,6 +17,12 @@
         
     <script src="https://cdn.botpress.cloud/webchat/v3.6/inject.js"></script>
 <script src="https://files.bpcontent.cloud/2026/06/25/11/20260625115143-PBG8C9O5.js" defer></script>
+
+        <script>
+  window.botpress.on('webchat:opened', () => {
+    window.botpress.sendEvent({ type: 'proactive-trigger', payload: {} })
+  })
+</script>
     
     </div>
     </body>
